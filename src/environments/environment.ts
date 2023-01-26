@@ -11,7 +11,11 @@ export const URL_BASE = `http://localhost:8080/api/`;
 export const API_ROUTES = {
   //Logeo de usuario
   AUTH: `auth/login`,
-  VALID_TOKEN: `auth/token-valid`
+  VALID_TOKEN: `auth/token-valid`,
+
+
+  //USER CONTROLLER
+  USERS_LIST: `user/list-users`
 
 };
 

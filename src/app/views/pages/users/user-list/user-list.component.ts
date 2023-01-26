@@ -1,22 +1,21 @@
 import { Component, OnInit } from '@angular/core';
 import { ColumnMode } from '@swimlane/ngx-datatable';
-import { ListUsers } from 'src/app/class/user.interface';
-import { UsersService } from '../services/users.service';
-import { DataTable } from "simple-datatables";
+import { DataList, ListUsers } from 'src/app/class/user.interface';
+import { UsersService } from '../../services/users.service';
 
 @Component({
-  selector: 'app-users',
-  templateUrl: './users.component.html',
-  styleUrls: ['./users.component.scss']
+  selector: 'app-user-list',
+  templateUrl: './user-list.component.html',
+  styleUrls: ['./user-list.component.scss']
 })
-export class UsersComponent implements OnInit {
+export class UserListComponent implements OnInit {
   rows = [];
   loadingIndicator = true;
   reorderable = true;
   ColumnMode = ColumnMode;
   listUsers: ListUsers = new ListUsers();
   constructor(private userService: UsersService) {
-   }
+  }
 
   ngOnInit(): void {
 
@@ -28,6 +27,8 @@ export class UsersComponent implements OnInit {
     )
   }
 
-  
+  updateUser(user: DataList){
+    console.log(user)
+  }
 
 }

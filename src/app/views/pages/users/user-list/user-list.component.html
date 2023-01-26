@@ -1,0 +1,115 @@
+<nav class="page-breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item active"><a routerLink=".">Users</a></li>
+    </ol>
+  </nav>
+  <div class="row justify-content-end">
+    <div class="col-12 col-lg-2 col-xl-2 col-xxl-2 col-md-3 m-2">
+        <button type="button" routerLink="/users/insert-user" class="btn btn-primary btn-icon-text float-end">
+          <i class="feather icon-check-square btn-icon-prepend"></i>
+          Nuevo 
+        </button>
+    </div>
+   
+  </div>
+  
+
+  <div class="row">
+    <div class="col-md-12 stretch-card">
+      <div class="card">
+        <div class="card-body">
+          <h6 class="card-title">Data Table Users</h6>
+
+          <div class="dataTable-wrapper dataTable-loading no-footer sortable searchable fixed-columns">
+            <div class="table-responsive">
+
+              <div class="dataTable-top justify-content betwent">
+                <div class="dataTable-dropdown">
+                  <label>
+                    <select class="dataTable-selector ">
+                      <option value="5">5</option>
+                      <option value="10" selected="">10</option>
+                      <option value="15">15</option>
+                      <option value="20">20</option>
+                      <option value="25">25</option>
+                    </select> entries per page
+                  </label>
+                  </div>
+                  <div class="dataTable-search">
+                    <input class="dataTable-input" placeholder="Search..." type="text">
+                  </div>
+              </div>
+              
+              <div class="dataTable-container">
+                <table id="dataTableExample" class="table" *ngIf="listUsers.sizePage > 0">
+              
+                  <thead>
+                    <tr >
+                      <th></th>
+                      <th>Name</th>
+                      <th>Email</th>
+                      <th>Username</th>
+                      <th>Roles</th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let item of listUsers.dataList"  style="vertical-align: baseline;">
+                      <td>{{item.pictureUser}}</td>
+                      <td>{{item.name}}</td>
+                      <td>{{item.email}}</td>
+                      <td>{{item.username}}</td>
+                      <td>
+                        <span *ngFor="let rol of item.roles; let i = index">{{rol.name}}
+                           <span *ngIf="i !== item.roles.length">, </span>
+                        </span>
+                      </td>
+                      <td class="d-flex align-items-center justify-content-center">
+                        <button type="button" (click)="updateUser(item)" class="btn btn-primary btn-sm btn-icon m-2" placement="top" ngbTooltip="Editar">
+                          <i class="feather icon-edit"></i>
+                        </button>
+                        <button type="button" class="btn btn-danger btn-sm btn-icon" placement="top" ngbTooltip="Eliminar">
+                          <i class="mdi mdi-delete-forever"></i>
+                        </button>
+                      </td>
+                    </tr>
+                   
+                  </tbody>
+                  <tfoot>
+                    <tr>
+                      <th></th>
+                      <th></th>
+                      <th></th>
+                      <th></th>
+                      <th></th>
+                      <th></th>
+                    </tr>
+                  </tfoot>
+                </table>
+              </div>
+  
+              <div class="dataTable-bottom">
+                <div class="dataTable-info">
+                  <span *ngIf="listUsers.dataLength">
+
+                  </span>
+                  Showing 1 to 10 of 22 entries
+                </div>
+                <nav class="dataTable-pagination">
+                  <ul class="dataTable-pagination-list">
+                    <li class="active"><a href="#" data-page="1">1</a></li>
+                    <li class=""><a href="#" data-page="2">2</a></li>
+                    <li class=""><a href="#" data-page="3">3</a></li>
+                    <li class="pager"><a href="#" data-page="2">›</a></li>
+                  </ul>
+                </nav>
+              </div>
+             
+            </div>
+
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </div>

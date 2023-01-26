@@ -17,7 +17,16 @@ export const MENU: MenuItem[] = [
   {
     label: 'Users',
     icon: 'user',
-    link: '/users'
+    subItems: [
+      {
+        label: 'Listado',
+        link: '/users/list-user',
+      }, 
+      {
+        label: 'Insertar',
+        link: '/users/insert-user',
+      },
+    ]
   },
   {
     label: 'Web Apps',
