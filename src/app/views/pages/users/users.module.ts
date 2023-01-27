@@ -1,12 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { UsersComponent } from './users.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { FeatherIconModule } from 'src/app/core/feather-icon/feather-icon.module';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { UserDetailComponent } from './user-detail/user-detail.component';
 import { UserListComponent } from './user-list/user-list.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 const routes: Routes = [
   {
@@ -19,7 +21,7 @@ const routes: Routes = [
         pathMatch: 'full'
       },
       {
-        path: 'detail-user',
+        path: 'detail-user/:id',
         component: UserDetailComponent
       },
       {
@@ -41,7 +43,11 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     FormsModule,
     FeatherIconModule,
-    NgxDatatableModule
+    NgxDatatableModule,
+    ReactiveFormsModule,
+    NgbModule,
+    NgSelectModule
+
   ]
 })
 export class UsersModule { }

@@ -2,7 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { map } from 'rxjs';
-import { ListUsers } from 'src/app/class/user.interface';
+import { ListUsers, UserDetail } from 'src/app/class/user.interface';
+import { UserDTO } from 'src/app/interfaces/auth-class';
 import { API_ROUTES, URL_BASE } from 'src/environments/environment';
 import { LocalStorageService } from './local-storage.service';
 
@@ -10,6 +11,7 @@ import { LocalStorageService } from './local-storage.service';
   providedIn: 'root'
 })
 export class UsersService {
+
 
   constructor(private http: HttpClient, private localStorage: LocalStorageService, private router: Router) { }
 
@@ -22,6 +24,38 @@ export class UsersService {
       )
     )
   }
+
+  getUserById(id: string | null) {
+    return this.http.get<UserDetail>(`${URL_BASE}${API_ROUTES.USER_BYID}${id}`).pipe(
+      map(
+        user => {
+          return user;
+        }
+      )
+    )
+  }
+
+  saveUser(update: UserDetail, id: string | null) {
+    let body = {
+      id: id,
+      username: update.username,
+      name: update.name,
+      email: update.email,
+      numberPhone: update.numberPhone,
+      roles: update.roles,
+    }
+    console.log(body)
+
+    return this.http.put<UserDetail>(`${URL_BASE}${API_ROUTES.USER_UPDATE}`, body).pipe(
+      map(
+        user => {
+          console.log(user)
+          return user;
+        }
+      )
+    )
+  }
+
 
 
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ColumnMode } from '@swimlane/ngx-datatable';
 import { DataList, ListUsers } from 'src/app/class/user.interface';
 import { UsersService } from '../../services/users.service';
@@ -14,7 +15,7 @@ export class UserListComponent implements OnInit {
   reorderable = true;
   ColumnMode = ColumnMode;
   listUsers: ListUsers = new ListUsers();
-  constructor(private userService: UsersService) {
+  constructor(private userService: UsersService, private router: Router) {
   }
 
   ngOnInit(): void {
@@ -28,6 +29,7 @@ export class UserListComponent implements OnInit {
   }
 
   updateUser(user: DataList){
+    this.router.navigate(['users/detail-user/'+user.id]);
     console.log(user)
   }
 

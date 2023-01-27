@@ -15,7 +15,13 @@ export const API_ROUTES = {
 
 
   //USER CONTROLLER
-  USERS_LIST: `user/list-users`
+  USERS_LIST: `user/list-users`,
+  USER_BYID: `user/edit-user/`,
+  USER_UPDATE: `user/update-user/`,
+  USER_INSERT: `user/new-user/`,
+
+  //ROLES CONTROLLER
+  ROLES_LIST: `roles/list-roles`,
 
 };
 
