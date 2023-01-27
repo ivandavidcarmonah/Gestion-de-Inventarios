@@ -89,10 +89,6 @@ export class UserDetailComponent implements OnInit {
 
 
   saveData(){
-    console.log(this.userDetail)
-    console.log(this.ngSelect.selectedValues)
-    console.log(this.formGroup.valid)
-  
     let update: UserDetail  =   this.formGroup.value;
     update.roles = [];
     
@@ -102,7 +98,8 @@ export class UserDetailComponent implements OnInit {
       })
     }
     this.userService.saveUser(update, this.id).subscribe(res => {
-      console.log(res)
+      this.userDetail = res
+      this.setRoles();
     })
     
   }

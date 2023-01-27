@@ -36,6 +36,7 @@ export class UsersService {
   }
 
   saveUser(update: UserDetail, id: string | null) {
+    
     let body = {
       id: id,
       username: update.username,
@@ -46,14 +47,27 @@ export class UsersService {
     }
     console.log(body)
 
-    return this.http.put<UserDetail>(`${URL_BASE}${API_ROUTES.USER_UPDATE}`, body).pipe(
-      map(
-        user => {
-          console.log(user)
-          return user;
-        }
+    if (id !== null) {
+      return this.http.put<UserDetail>(`${URL_BASE}${API_ROUTES.USER_UPDATE}`, body).pipe(
+        map(
+          user => {
+            console.log(user)
+            return user;
+          }
+        )
       )
-    )
+    }
+    else {
+      return this.http.post<UserDetail>(`${URL_BASE}${API_ROUTES.USER_INSERT}`, body).pipe(
+        map(
+          user => {
+            console.log(user)
+            return user;
+          }
+        )
+      )
+    }
+    
   }
 
 

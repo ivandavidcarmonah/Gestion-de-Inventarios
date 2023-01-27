@@ -54,34 +54,46 @@
                 </div><!-- Col -->
 
 
-                <div class="col-6">
-                  <div class="mb-3">
-                      <label class="form-label">Roles</label>
-                      
-                      
-                      <ng-select
-                      [items]="roles"
-                      [multiple]=true
-                      bindLabel="name"
-                      [closeOnSelect]="false"
-                      bindValue="id"
-                      name="first"
-                      [(ngModel)]="selectedRol" [ngModelOptions]="{standalone: true}">
-                      <ng-template ng-option-tmp let-item="item" let-item$="item$" let-index="index">
-                        <input id="item-{{index}}" type="checkbox" [ngModel]="item$.selected"  [ngModelOptions]="{standalone: true}"/> {{item.name}}
-                      </ng-template>
-                    </ng-select>
-                    <div class="mt-2">
-                      <u>
-                        <ul *ngFor="let item of selectedRol">{{item.name}}</ul>
-                      </u>
-                    </div>
-                  </div>
-                </div><!-- Col -->
             
                 
               </div><!-- Row -->
-              <button type="submit" class="btn btn-primary submit">Submit form</button>
+
+
+
+              <div class="col-6">
+                <div class="mb-3">
+                    <label class="form-label">Roles</label>
+                    
+                    
+                    <ng-select
+                    [items]="roles"
+                    [multiple]=true
+                    bindLabel="name"
+                    [closeOnSelect]="false"
+                    bindValue="id"
+                    name="first"
+                    [(ngModel)]="selectedRol" [ngModelOptions]="{standalone: true}">
+                    <ng-template ng-option-tmp let-item="item" let-item$="item$" let-index="index">
+                      <input id="item-{{index}}" type="checkbox" [ngModel]="item$.selected"  [ngModelOptions]="{standalone: true}"/> {{item.name}}
+                    </ng-template>
+                  </ng-select>
+                </div>
+              </div><!-- Col -->
+
+              <div class="row">
+                <div class="col-sm-4">
+                  <div class="mb-3">
+                    <label class="form-label">Gender</label>
+                    <input type="text" class="form-control" formControlName="idGender"  placeholder="Enter email">
+                  </div>
+                </div><!-- Col -->
+
+
+            
+                
+              </div><!-- Row -->
+
+              <button type="submit" class="btn btn-primary submit">Save</button>
 
             </form>
 

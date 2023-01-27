@@ -7,7 +7,6 @@ import { DataTable } from "simple-datatables";
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
-  styleUrls: ['./users.component.scss']
 })
 export class UsersComponent implements OnInit {
   rows = [];
@@ -19,12 +18,10 @@ export class UsersComponent implements OnInit {
    }
 
   ngOnInit(): void {
-
     this.userService.getUsers().subscribe(res => {
       this.listUsers = {...res}
       this.listUsers.sizePage = res.sizePage;
-
-    }
+      }
     )
   }
 
