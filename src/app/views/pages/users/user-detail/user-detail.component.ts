@@ -5,6 +5,7 @@ import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { NgSelectComponent } from '@ng-select/ng-select';
 import {  UserDetail } from 'src/app/class/user.interface';
 import { RolesI } from 'src/app/interfaces/roles.interface';
+import Swal from 'sweetalert2';
 import { RolesService } from '../../services/roles.service';
 import { UsersService } from '../../services/users.service';
 
@@ -97,10 +98,29 @@ export class UserDetailComponent implements OnInit {
         update.roles.push(rol);
       })
     }
-    this.userService.saveUser(update, this.id).subscribe(res => {
-      this.userDetail = res
-      this.setRoles();
-    })
+
+    this.userService.saveUser(update, this.id).subscribe({
+      next: (res => {
+        this.userDetail = res
+       
+        this.setRoles();
+      }),
+      error: (err => {
+        console.log(err)
+        Swal.fire("Error", err.error, "error")
+      }),
+      complete: () => {
+        if (this.id !== null) {
+          Swal.fire("Actualizado", "Actualizado correctamente", "success")
+        }
+        else {
+          Swal.fire("Creado", "Creado correctamente", "success")
+        }
+        this.id = this.userDetail.id.toString();
+        
+      },
+    });
+   
     
   }
 
