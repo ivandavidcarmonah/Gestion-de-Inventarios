@@ -15,22 +15,45 @@ export class UserListComponent implements OnInit {
   reorderable = true;
   ColumnMode = ColumnMode;
   listUsers: ListUsers = new ListUsers();
+  numberPage: any = 0;
+  orderBy: string = "id";
+  pageSize: number = 5;
+  sortDir: string = "desc";
+  numbers: number[];
+
   constructor(private userService: UsersService, private router: Router) {
   }
 
   ngOnInit(): void {
+    this.getUsers();
+  }
 
-    this.userService.getUsers().subscribe(res => {
+  updateUser(user: DataList){
+    this.router.navigate(['users/detail-user/'+user.id]);
+  }
+
+  onChange(event: any){
+    this.pageSize = event.target.value;
+    console.log(this.pageSize)
+    this.getUsers();
+  }
+
+  getUsers(){
+    this.userService.getUsersDatas(this.numberPage, this.pageSize, this.orderBy, this.sortDir).subscribe(res => {
       this.listUsers = {...res}
-      this.listUsers.sizePage = res.sizePage;
+      this.numberPage = res.numberPage;
+      this.pageSize = res.sizePage;
+      this.numbers = Array(res.totalPages).fill(0).map((x,i)=>i);
 
     }
     )
   }
 
-  updateUser(user: DataList){
-    this.router.navigate(['users/detail-user/'+user.id]);
-    console.log(user)
+  changePage(numberPage: number){
+    this.numberPage = numberPage
+    this.getUsers();
   }
+
+  
 
 }

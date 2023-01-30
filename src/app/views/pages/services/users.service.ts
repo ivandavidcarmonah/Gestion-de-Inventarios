@@ -25,6 +25,16 @@ export class UsersService {
     )
   }
 
+  getUsersDatas(numberPage: number, pageSize: number, orderBy: string, sortDir: string ){
+    return this.http.get<ListUsers>(`${URL_BASE}${API_ROUTES.USERS_LIST}?numberPage=${numberPage}&pageSize=${pageSize}&orderBy=${orderBy}&sortDir=${sortDir}`).pipe(
+      map(
+        user => {
+          return user;
+        }
+      )
+    )
+  }
+
   getUserById(id: string | null) {
     return this.http.get<UserDetail>(`${URL_BASE}${API_ROUTES.USER_BYID}${id}`).pipe(
       map(
