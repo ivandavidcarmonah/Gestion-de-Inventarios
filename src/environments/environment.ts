@@ -23,6 +23,11 @@ export const API_ROUTES = {
   //ROLES CONTROLLER
   ROLES_LIST: `roles/list-roles`,
 
+  //MASTER DATA
+  GENDERS: `master-data/genders`,//Generos
+  LANGUAGES: `master-data/languages`,//Generos
+
+
 };
 
 /*

@@ -49,7 +49,10 @@
                 <div class="col-sm-4">
                   <div class="mb-3">
                     <label class="form-label">Gender</label>
-                    <input type="text" class="form-control" formControlName="idGender"  placeholder="Enter email">
+                    
+
+                    
+                   
                   </div>
                 </div><!-- Col -->
 
@@ -65,7 +68,7 @@
                     <label class="form-label">Roles</label>
                     
                     
-                    <ng-select
+                    <ng-select #ngSelectRoles
                     [items]="roles"
                     [multiple]=true
                     bindLabel="name"
@@ -84,7 +87,12 @@
                 <div class="col-sm-4">
                   <div class="mb-3">
                     <label class="form-label">Gender</label>
-                    <input type="text" class="form-control" formControlName="idGender"  placeholder="Enter email">
+                    <ng-select #ngSelectGender [items]="genders"
+                    bindLabel="name"
+                    bindValue="id"
+                    [searchable]="false"
+                    [(ngModel)]="selectedGender"  [ngModelOptions]="{standalone: true}">
+                  </ng-select>
                   </div>
                 </div><!-- Col -->
 

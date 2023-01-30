@@ -1,11 +1,12 @@
-import { stringify } from '@angular/compiler/src/util';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { NgSelectComponent } from '@ng-select/ng-select';
+import { IGenders } from 'src/app/class/master-data';
 import {  UserDetail } from 'src/app/class/user.interface';
 import { RolesI } from 'src/app/interfaces/roles.interface';
 import Swal from 'sweetalert2';
+import { MasterDataService } from '../../services/master-data.service';
 import { RolesService } from '../../services/roles.service';
 import { UsersService } from '../../services/users.service';
 
@@ -16,15 +17,21 @@ import { UsersService } from '../../services/users.service';
 })
 export class UserDetailComponent implements OnInit {
 
-  @ViewChild(NgSelectComponent) ngSelect: NgSelectComponent;
+  @ViewChild('ngSelectRoles') ngSelectRoles: NgSelectComponent;
+  @ViewChild('ngSelectGender') ngSelectGender: NgSelectComponent;
 
   public id: string | null;
   public formGroup: FormGroup;
   public userDetail: UserDetail;
 
   selectedRol: RolesI[] = [];
+  selectedGender: IGenders;
+
   roles: RolesI[] = [];
-  constructor(private rolesService: RolesService, private route: ActivatedRoute, private userService: UsersService, private router: Router, private formBuilder: FormBuilder) { 
+
+  genders: IGenders[];
+
+  constructor(private masterDataService: MasterDataService, private rolesService: RolesService, private route: ActivatedRoute, private userService: UsersService, private router: Router, private formBuilder: FormBuilder) { 
     this.masterData();
     this.formGroup = this.formBuilder.group({
       id: [""],
@@ -42,13 +49,22 @@ export class UserDetailComponent implements OnInit {
   }
   masterData() {
     this.getRoles();
+    this.getGenders();
+  }
+
+  getGenders() {
+    this.masterDataService.getGenders()
+      .subscribe(res => {
+        this.genders = res
+    });
+
+
   }
   getRoles() {
     this.rolesService.getRoles()
       .subscribe(res => {
         this.roles = res
       });
-    ;
   }
 
   ngOnInit(): void {
@@ -66,14 +82,26 @@ export class UserDetailComponent implements OnInit {
         this.userDetail = res
         this.setDataForm();
         this.setRoles();
+        this.setGender();
       });
     
+  }
+   setGender() {
+    this.genders.find(res => {
+      
+      if (res.id ==  this.userDetail.idGender ) {
+        let item = this.ngSelectGender.itemsList.findByLabel(res.name);
+        this.ngSelectGender.select(item);
+        this.selectedGender = res;
+      }
+    })
+
   }
   setRoles() {
     this.userDetail.roles.forEach(rol => {
       this.selectedRol.push(rol);
-      let item = this.ngSelect.itemsList.findByLabel(rol.name);
-      this.ngSelect.select(item);
+      let item = this.ngSelectRoles.itemsList.findByLabel(rol.name);
+      this.ngSelectRoles.select(item);
     });
   }
   setDataForm() {
@@ -92,9 +120,10 @@ export class UserDetailComponent implements OnInit {
   saveData(){
     let update: UserDetail  =   this.formGroup.value;
     update.roles = [];
+    console.log(update)
     
-    if (this.ngSelect.selectedValues.length > 0) {
-      this.ngSelect.selectedValues.forEach(rol => {
+    if (this.ngSelectRoles.selectedValues.length > 0) {
+      this.ngSelectRoles.selectedValues.forEach(rol => {
         update.roles.push(rol);
       })
     }
