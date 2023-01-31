@@ -19,6 +19,7 @@ export const API_ROUTES = {
   USER_BYID: `user/edit-user/`,
   USER_UPDATE: `user/update-user/`,
   USER_INSERT: `user/new-user/`,
+  USER_DELETE: `user/delete/`,
 
   //ROLES CONTROLLER
   ROLES_LIST: `roles/list-roles`,

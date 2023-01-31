@@ -65,12 +65,13 @@
                         </span>
                       </td>
                       <td class="d-flex align-items-center justify-content-center">
+                        <button type="button" (click)="deleteUser(item)" class="btn btn-danger btn-sm btn-icon" placement="top" ngbTooltip="Eliminar" >
+                          <i class="mdi mdi-delete-forever"></i>
+                        </button>
                         <button type="button" (click)="updateUser(item)" class="btn btn-primary btn-sm btn-icon m-2" placement="top" ngbTooltip="Editar">
                           <i class="feather icon-edit"></i>
                         </button>
-                        <button type="button" class="btn btn-danger btn-sm btn-icon" placement="top" ngbTooltip="Eliminar">
-                          <i class="mdi mdi-delete-forever"></i>
-                        </button>
+                        
                       </td>
                     </tr>
                    
@@ -98,7 +99,7 @@
                 <nav class="dataTable-pagination">
                   <ul class="dataTable-pagination-list">
                     <li class="{{this.numberPage == item? 'active': ''}}" *ngFor="let item of numbers; let i = index" ><a (click)="changePage(item)" data-page="item">{{item+1}}</a></li>
-                    <li class="pager"><a href="#" data-page="2">›</a></li>
+                    <li class="pager"><a data-page="2">›</a></li>
                   </ul>
                 </nav>
               </div>

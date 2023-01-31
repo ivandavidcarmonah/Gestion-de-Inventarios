@@ -44,6 +44,16 @@ export class UsersService {
     )
   }
 
+  delete(id: number){
+    return this.http.delete<string>(`${URL_BASE}${API_ROUTES.USER_DELETE}${id}`).pipe(
+      map(
+        res => {
+          return res;
+        }
+      )
+    )
+  }
+
   saveUser(update: UserDetail, id: string | null) {
     
     let body = {

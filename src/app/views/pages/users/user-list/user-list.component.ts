@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ColumnMode } from '@swimlane/ngx-datatable';
 import { DataList, ListUsers } from 'src/app/class/user.interface';
+import Swal from 'sweetalert2';
 import { UsersService } from '../../services/users.service';
 
 @Component({
@@ -47,6 +48,61 @@ export class UserListComponent implements OnInit {
 
     }
     )
+  }
+
+  deleteUser(user: DataList){
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: 'btn btn-success m-2',
+        cancelButton: 'btn btn-danger'
+      },
+      buttonsStyling: false
+    })
+    
+    swalWithBootstrapButtons.fire({
+      title: 'Are you sure?',
+      text: 'Esta apunto de eliminar al usuario: ' + user.username.toUpperCase() +', Esta accion no es reversible',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, delete it!',
+      cancelButtonText: 'No, cancel!',
+      reverseButtons: true
+    }).then((result) => {
+      if (result.isConfirmed) {
+
+        this.userService.delete(user.id).subscribe({
+          next: (res => {
+            console.log(res)
+          }),
+          error: (err => {
+            console.log(err)
+            swalWithBootstrapButtons.fire(
+              'Deleted!',
+              'Your file has been deleted.',
+              'success'
+            )
+            this.getUsers();
+          }),
+          complete: () => {
+            swalWithBootstrapButtons.fire(
+              'Deleted!',
+              'Your file has been deleted.',
+              'success'
+            )
+          },
+        });
+
+      } else if (
+        /* Read more about handling dismissals below */
+        result.dismiss === Swal.DismissReason.cancel
+      ) {
+        swalWithBootstrapButtons.fire(
+          'Cancelled',
+          'Your imaginary file is safe :)',
+          'error'
+        )
+      }
+    })
   }
 
   changePage(numberPage: number){
