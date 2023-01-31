@@ -2,9 +2,9 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { NgSelectComponent } from '@ng-select/ng-select';
-import { IGenders } from 'src/app/class/master-data';
+import { IGender, ILanguage } from 'src/app/class/master-data';
 import {  UserDetail } from 'src/app/class/user.interface';
-import { RolesI } from 'src/app/interfaces/roles.interface';
+import { IRoles } from 'src/app/interfaces/roles.interface';
 import Swal from 'sweetalert2';
 import { MasterDataService } from '../../services/master-data.service';
 import { RolesService } from '../../services/roles.service';
@@ -19,17 +19,22 @@ export class UserDetailComponent implements OnInit {
 
   @ViewChild('ngSelectRoles') ngSelectRoles: NgSelectComponent;
   @ViewChild('ngSelectGender') ngSelectGender: NgSelectComponent;
+  @ViewChild('ngSelectLanguage') ngSelectLanguage: NgSelectComponent;
 
   public id: string | null;
   public formGroup: FormGroup;
   public userDetail: UserDetail;
 
-  selectedRol: RolesI[] = [];
+  roles: IRoles[] = [];
+  genders: IGender[];
+  languages: ILanguage[];
+
+  selectedRol: IRoles[] = [];
   selectedGender: number;
+  selectedLanguage: number;
 
-  roles: RolesI[] = [];
 
-  genders: IGenders[];
+
 
   constructor(private masterDataService: MasterDataService, private rolesService: RolesService, private route: ActivatedRoute, private userService: UsersService, private router: Router, private formBuilder: FormBuilder) { 
     this.masterData();
@@ -48,6 +53,13 @@ export class UserDetailComponent implements OnInit {
   masterData() {
     this.getRoles();
     this.getGenders();
+    this.getLanguages();
+  }
+  getLanguages() {
+    this.masterDataService.getLanguages()
+      .subscribe(res => {
+        this.languages = res
+    });
   }
 
   getGenders() {
@@ -55,8 +67,6 @@ export class UserDetailComponent implements OnInit {
       .subscribe(res => {
         this.genders = res
     });
-
-
   }
   getRoles() {
     this.rolesService.getRoles()
@@ -81,12 +91,18 @@ export class UserDetailComponent implements OnInit {
         this.setDataForm();
         this.setRoles();
         this.setGender();
+        this.setLanguage();
       });
     
   }
   setGender() {
     this.selectedGender = this.userDetail.gender.id;
   }
+
+  setLanguage() {
+    this.selectedLanguage = this.userDetail.language.id;
+  }
+
   setRoles() {
     this.userDetail.roles.forEach(rol => {
       this.selectedRol.push(rol);
@@ -101,15 +117,12 @@ export class UserDetailComponent implements OnInit {
     this.formGroup.patchValue({"birthDate": this.userDetail.birthDate})
     this.formGroup.patchValue({"numberPhone": this.userDetail.numberPhone})
     this.formGroup.patchValue({"pictureUser": this.userDetail.pictureUser})
-    this.formGroup.patchValue({"roles": this.userDetail.roles})
   }
 
 
   saveData(){
     let update: UserDetail  =   this.formGroup.value;
     update.roles = [];
-    console.log(update)
-    
     if (this.ngSelectRoles.selectedValues.length > 0) {
       this.ngSelectRoles.selectedValues.forEach(rol => {
         update.roles.push(rol);
@@ -121,6 +134,13 @@ export class UserDetailComponent implements OnInit {
         update.gender = res;
       })
     }
+
+    if (this.ngSelectLanguage.selectedValues.length > 0) {
+      this.ngSelectLanguage.selectedValues.forEach(res => {
+        update.language = res;
+      })
+    }
+
 
     this.userService.saveUser(update, this.id).subscribe({
       next: (res => {

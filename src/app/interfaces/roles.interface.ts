@@ -1,4 +1,4 @@
-export interface RolesI {
+export interface IRoles {
     id:   string;
     name: string;
 }

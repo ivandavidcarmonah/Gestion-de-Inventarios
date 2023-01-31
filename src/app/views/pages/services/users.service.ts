@@ -55,14 +55,12 @@ export class UsersService {
       numberPhone: update.numberPhone,
       roles: update.roles,
       gender: update.gender,
+      language: update.language
     }
-    console.log(body)
-
     if (id !== null) {
       return this.http.put<UserDetail>(`${URL_BASE}${API_ROUTES.USER_UPDATE}`, body).pipe(
         map(
           user => {
-            console.log(user)
             return user;
           }
         )
@@ -72,7 +70,6 @@ export class UsersService {
       return this.http.post<UserDetail>(`${URL_BASE}${API_ROUTES.USER_INSERT}`, body).pipe(
         map(
           user => {
-            console.log(user)
             return user;
           }
         ) 
