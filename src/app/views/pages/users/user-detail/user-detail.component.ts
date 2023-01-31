@@ -40,13 +40,11 @@ export class UserDetailComponent implements OnInit {
   constructor(private datePipe: DatePipe, private masterDataService: MasterDataService, private rolesService: RolesService, private route: ActivatedRoute, private userService: UsersService, private router: Router, private formBuilder: FormBuilder) { 
     this.masterData();
     this.formGroup = this.formBuilder.group({
-      id: [""],
       username:  ["", Validators.required],
       name:     ["", Validators.required],
       email:  ["", Validators.required],
       birthDate:  [""],
       numberPhone: [""],
-      password:    ["", Validators.required],
       pictureUser:  [""],
     });
 
@@ -112,69 +110,70 @@ export class UserDetailComponent implements OnInit {
     });
   }
   setDataForm() {
-    const dateIni =  this.userDetail.birthDate
-    const iniYear =  Number(this.datePipe.transform(dateIni, 'yyyy'));
-    const iniMonth =  Number(this.datePipe.transform(dateIni, 'MM'));
-    const iniDay =  Number(this.datePipe.transform(dateIni, 'dd'));
-    let dateModel = iniYear +'/'+iniDay +'/'+iniMonth;
-
 
     this.formGroup.patchValue({"name": this.userDetail.name})
     this.formGroup.patchValue({"username": this.userDetail.username})
     this.formGroup.patchValue({"email": this.userDetail.email})
-    this.formGroup.patchValue({"birthDate": dateModel})
+    this.formGroup.patchValue({"birthDate":  this.userDetail.birthDate})
     this.formGroup.patchValue({"numberPhone": this.userDetail.numberPhone})
     this.formGroup.patchValue({"pictureUser": this.userDetail.pictureUser})
   }
 
 
   saveData(){
-    let update: UserDetail  =   this.formGroup.value;
-    console.log(update)
-    update.roles = [];
-    if (this.ngSelectRoles.selectedValues.length > 0) {
-      this.ngSelectRoles.selectedValues.forEach(rol => {
-        update.roles.push(rol);
-      })
+    if(this.formGroup.valid){
+      let update: UserDetail  =   this.formGroup.value;
+      console.log(update)
+      update.roles = [];
+      if (this.ngSelectRoles.selectedValues.length > 0) {
+        this.ngSelectRoles.selectedValues.forEach(rol => {
+          update.roles.push(rol);
+        })
+      }
+  
+      if (this.ngSelectGender.selectedValues.length > 0) {
+        this.ngSelectGender.selectedValues.forEach(res => {
+          update.gender = res;
+        })
+      }
+  
+      if (this.ngSelectLanguage.selectedValues.length > 0) {
+        this.ngSelectLanguage.selectedValues.forEach(res => {
+          update.language = res;
+        })
+      }
+  
+  
+      this.userService.saveUser(update, this.id).subscribe({
+        next: (res => {
+          this.userDetail = res
+         
+          this.setRoles();
+        }),
+        error: (err => {
+          console.log(err)
+          Swal.fire("Error", err.error, "error")
+        }),
+        complete: () => {
+          if (this.id !== null) {
+            Swal.fire("Actualizado", "Actualizado correctamente", "success")
+          }
+          else {
+            Swal.fire("Creado", "Creado correctamente", "success")
+          }
+          this.id = this.userDetail.id.toString();
+          
+        },
+      });
+
     }
-
-    if (this.ngSelectGender.selectedValues.length > 0) {
-      this.ngSelectGender.selectedValues.forEach(res => {
-        update.gender = res;
-      })
-    }
-
-    if (this.ngSelectLanguage.selectedValues.length > 0) {
-      this.ngSelectLanguage.selectedValues.forEach(res => {
-        update.language = res;
-      })
-    }
-
-
-    this.userService.saveUser(update, this.id).subscribe({
-      next: (res => {
-        this.userDetail = res
-       
-        this.setRoles();
-      }),
-      error: (err => {
-        console.log(err)
-        Swal.fire("Error", err.error, "error")
-      }),
-      complete: () => {
-        if (this.id !== null) {
-          Swal.fire("Actualizado", "Actualizado correctamente", "success")
-        }
-        else {
-          Swal.fire("Creado", "Creado correctamente", "success")
-        }
-        this.id = this.userDetail.id.toString();
-        
-      },
-    });
-   
     
   }
+
+  regresar(){
+    this.router.navigate(['users/list-user/']);
+  }
+
 
 
 }

@@ -8,13 +8,36 @@
                 <div class="col-sm-6">
                   <div class="mb-3">
                     <label class="form-label">First Name</label>
-                    <input type="text" class="form-control" placeholder="Enter first name" formControlName="name" >
+                    <input type="text" class="form-control" placeholder="Enter first name" formControlName="name" required>
+                    
+                    <div
+                      *ngIf="
+                        formGroup.controls['name'].invalid &&
+                        (formGroup.controls['name'].dirty || formGroup.controls['name'].touched)
+                      "
+                      class="alert alert-danger"
+                    >
+                      <div *ngIf="formGroup.controls['name'].errors">
+                        Name is required.
+                      </div>
+                    </div>
                   </div>
                 </div><!-- Col -->
                 <div class="col-sm-6">
                   <div class="mb-3">
                     <label class="form-label">Email</label>
-                    <input type="email" class="form-control"  formControlName="email" >
+                    <input type="email" class="form-control"  formControlName="email" required>
+                      <div
+                        *ngIf="
+                          formGroup.controls['email'].invalid &&
+                          (formGroup.controls['email'].dirty || formGroup.controls['email'].touched)
+                        "
+                        class="alert alert-danger"
+                      >
+                        <div *ngIf="formGroup.controls['email'].errors">
+                          Email is required.
+                        </div>
+                      </div>
                   </div>
                 </div><!-- Col -->
               </div><!-- Row -->
@@ -22,7 +45,22 @@
                 <div class="col-sm-4">
                   <div class="mb-3">
                     <label class="form-label">Username</label>
-                    <input type="text" class="form-control" formControlName="username"  placeholder="Enter city">
+                    <input type="text" class="form-control" formControlName="username"  placeholder="Username" required>
+                    <div
+                      *ngIf="
+                        formGroup.controls['username'].invalid &&
+                        (formGroup.controls['username'].dirty || formGroup.controls['username'].touched)
+                      "
+                      class="alert alert-danger"
+                    >
+                      <div *ngIf="formGroup.controls['username'].errors">
+                        Username is required.
+                      </div>
+                    </div>
+
+
+
+
                   </div>
                 </div><!-- Col -->
                 <div class="col-sm-4">
@@ -88,10 +126,8 @@
                 </div>
               </div><!-- Col -->
 
-            
-
-              <button type="submit" class="btn btn-primary submit">Save</button>
-
+              <button type="button" class="btn btn-danger m-2" (click)="regresar()">Back</button>
+              <button type="submit" class="btn btn-primary submit" [disabled]="!formGroup.valid">Save</button>
             </form>
 
              
