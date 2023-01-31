@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { UsersComponent } from './users.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
@@ -48,6 +48,9 @@ const routes: Routes = [
     NgbModule,
     NgSelectModule
 
+  ],
+  providers:[
+    DatePipe
   ]
 })
 export class UsersModule { }

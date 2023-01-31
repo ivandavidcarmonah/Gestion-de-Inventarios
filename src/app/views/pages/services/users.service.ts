@@ -3,7 +3,6 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { map } from 'rxjs';
 import { ListUsers, UserDetail } from 'src/app/class/user.interface';
-import { UserDTO } from 'src/app/interfaces/auth-class';
 import { API_ROUTES, URL_BASE } from 'src/environments/environment';
 import { LocalStorageService } from './local-storage.service';
 
@@ -55,7 +54,9 @@ export class UsersService {
       numberPhone: update.numberPhone,
       roles: update.roles,
       gender: update.gender,
-      language: update.language
+      language: update.language,
+      birthDate: update.birthDate
+
     }
     if (id !== null) {
       return this.http.put<UserDetail>(`${URL_BASE}${API_ROUTES.USER_UPDATE}`, body).pipe(

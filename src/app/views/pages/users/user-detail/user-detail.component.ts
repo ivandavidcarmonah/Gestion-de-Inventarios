@@ -1,3 +1,4 @@
+import { DatePipe } from '@angular/common';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
@@ -36,7 +37,7 @@ export class UserDetailComponent implements OnInit {
 
 
 
-  constructor(private masterDataService: MasterDataService, private rolesService: RolesService, private route: ActivatedRoute, private userService: UsersService, private router: Router, private formBuilder: FormBuilder) { 
+  constructor(private datePipe: DatePipe, private masterDataService: MasterDataService, private rolesService: RolesService, private route: ActivatedRoute, private userService: UsersService, private router: Router, private formBuilder: FormBuilder) { 
     this.masterData();
     this.formGroup = this.formBuilder.group({
       id: [""],
@@ -111,10 +112,17 @@ export class UserDetailComponent implements OnInit {
     });
   }
   setDataForm() {
+    const dateIni =  this.userDetail.birthDate
+    const iniYear =  Number(this.datePipe.transform(dateIni, 'yyyy'));
+    const iniMonth =  Number(this.datePipe.transform(dateIni, 'MM'));
+    const iniDay =  Number(this.datePipe.transform(dateIni, 'dd'));
+    let dateModel = iniYear +'/'+iniDay +'/'+iniMonth;
+
+
     this.formGroup.patchValue({"name": this.userDetail.name})
     this.formGroup.patchValue({"username": this.userDetail.username})
     this.formGroup.patchValue({"email": this.userDetail.email})
-    this.formGroup.patchValue({"birthDate": this.userDetail.birthDate})
+    this.formGroup.patchValue({"birthDate": dateModel})
     this.formGroup.patchValue({"numberPhone": this.userDetail.numberPhone})
     this.formGroup.patchValue({"pictureUser": this.userDetail.pictureUser})
   }
@@ -122,6 +130,7 @@ export class UserDetailComponent implements OnInit {
 
   saveData(){
     let update: UserDetail  =   this.formGroup.value;
+    console.log(update)
     update.roles = [];
     if (this.ngSelectRoles.selectedValues.length > 0) {
       this.ngSelectRoles.selectedValues.forEach(rol => {
