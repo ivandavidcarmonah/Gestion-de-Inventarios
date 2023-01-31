@@ -54,6 +54,7 @@ export class UsersService {
       email: update.email,
       numberPhone: update.numberPhone,
       roles: update.roles,
+      gender: update.gender,
     }
     console.log(body)
 

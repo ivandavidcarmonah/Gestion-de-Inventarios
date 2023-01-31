@@ -1,4 +1,5 @@
 import { RolesI } from "../interfaces/roles.interface";
+import { IGenders } from "./master-data";
 
 export class Role {
     id: number;
@@ -33,7 +34,7 @@ export interface UserDetail {
     password:          string;
     pictureUser:       null;
     modification_date: null;
-    idGender:          number;
+    gender:            IGenders;
     idLanguage:        number;
     roles:             RolesI[];
 }

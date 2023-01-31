@@ -25,7 +25,7 @@ export class UserDetailComponent implements OnInit {
   public userDetail: UserDetail;
 
   selectedRol: RolesI[] = [];
-  selectedGender: IGenders;
+  selectedGender: number;
 
   roles: RolesI[] = [];
 
@@ -42,8 +42,6 @@ export class UserDetailComponent implements OnInit {
       numberPhone: [""],
       password:    ["", Validators.required],
       pictureUser:  [""],
-      idGender:  [""],
-      idLanguage:   [""],
     });
 
   }
@@ -86,16 +84,8 @@ export class UserDetailComponent implements OnInit {
       });
     
   }
-   setGender() {
-    this.genders.find(res => {
-      
-      if (res.id ==  this.userDetail.idGender ) {
-        let item = this.ngSelectGender.itemsList.findByLabel(res.name);
-        this.ngSelectGender.select(item);
-        this.selectedGender = res;
-      }
-    })
-
+  setGender() {
+    this.selectedGender = this.userDetail.gender.id;
   }
   setRoles() {
     this.userDetail.roles.forEach(rol => {
@@ -111,8 +101,6 @@ export class UserDetailComponent implements OnInit {
     this.formGroup.patchValue({"birthDate": this.userDetail.birthDate})
     this.formGroup.patchValue({"numberPhone": this.userDetail.numberPhone})
     this.formGroup.patchValue({"pictureUser": this.userDetail.pictureUser})
-    this.formGroup.patchValue({"idGender": this.userDetail.idGender})
-    this.formGroup.patchValue({"idLanguage": this.userDetail.idLanguage})
     this.formGroup.patchValue({"roles": this.userDetail.roles})
   }
 
@@ -125,6 +113,12 @@ export class UserDetailComponent implements OnInit {
     if (this.ngSelectRoles.selectedValues.length > 0) {
       this.ngSelectRoles.selectedValues.forEach(rol => {
         update.roles.push(rol);
+      })
+    }
+
+    if (this.ngSelectGender.selectedValues.length > 0) {
+      this.ngSelectGender.selectedValues.forEach(res => {
+        update.gender = res;
       })
     }
 
