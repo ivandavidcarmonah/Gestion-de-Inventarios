@@ -1,8 +1,9 @@
-import { Component, OnInit, ViewChild, ElementRef, Inject, Renderer2 } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, Inject, Renderer2, Output } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { Router } from '@angular/router';
 import { AuthService } from '../../pages/services/auth.service';
 import { UserDTO } from 'src/app/interfaces/auth-class';
+import { EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-navbar',
@@ -10,19 +11,26 @@ import { UserDTO } from 'src/app/interfaces/auth-class';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
+  
+  @Output() changeLang: EventEmitter<string> = new EventEmitter<string>();
 
   public userDTO: UserDTO | null;
 
   constructor(
     @Inject(DOCUMENT) private document: Document, 
     private renderer: Renderer2,
-    private router: Router, private authService: AuthService
+    private router: Router, private authService: AuthService,
   ) { }
 
   ngOnInit(): void {
     this.authService.user.subscribe(user => {
       this.userDTO = user;
     });
+  }
+
+  changueLang(value: string) {
+    console.log(value)
+    this.changeLang.emit(value);
   }
 
   /**

@@ -1,0 +1,29 @@
+{
+    "BACK": "Back",
+    "SAVE": "Save",
+    "DELETE": "Delete",
+
+
+    "USER_CONTROLLER":{
+        "UPDATE_USER": "Update User",
+        "NEW_USER":"New User",       
+        "NAME_FIRST": "First Name",
+        "EMAIL": "Email",
+        "USERNAME": "Username",
+        "BIRTHDATE": "Birth Date",
+        "PHONE": "Phone",
+        "GENDER": "Gender",
+        "LANGUAGE":"Language",
+        "ROLES":"Roles",
+
+        "ERROR": {
+            "REQUIRED_NAME": "Name is required.",
+            "REQUIRED_EMAIL": "Email  is required.",
+            "REQUIRED_USERNAME": "Username  is required."
+        }
+
+    }
+
+    
+    
+}

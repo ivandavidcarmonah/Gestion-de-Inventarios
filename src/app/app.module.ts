@@ -13,7 +13,15 @@ import { ErrorPageComponent } from './views/pages/error-page/error-page.componen
 
 import { HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
 import { JwtInterceptor } from './core/interceptor/jwt.interceptor';
-import { RolesDirective } from './core/directives/roles.directive';
+import { SharedModule } from './shared/shared.module';
+
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { HttpClient } from '@angular/common/http';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+
+export function createTranslateLoader(http: HttpClient) {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
 
 @NgModule({
   declarations: [
@@ -25,7 +33,15 @@ import { RolesDirective } from './core/directives/roles.directive';
     AppRoutingModule,
     BrowserAnimationsModule,
     LayoutModule,
-    HttpClientModule
+    HttpClientModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: (createTranslateLoader),
+        deps: [HttpClient]
+    },
+    defaultLanguage: 'es',
+  })
   ],
   providers: [
     AuthGuard,

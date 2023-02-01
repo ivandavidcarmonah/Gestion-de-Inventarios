@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule, DatePipe } from '@angular/common';
 import { UsersComponent } from './users.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -10,6 +10,8 @@ import { UserListComponent } from './user-list/user-list.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { RolesDirective } from 'src/app/core/directives/roles.directive';
+import { SharedModule } from 'src/app/shared/shared.module';
+import { TranslateModule } from '@ngx-translate/core';
 
 const routes: Routes = [
   {
@@ -48,12 +50,13 @@ const routes: Routes = [
     NgxDatatableModule,
     ReactiveFormsModule,
     NgbModule,
-    NgSelectModule
-
+    NgSelectModule,
+    TranslateModule
+    
   ],
   providers:[
     DatePipe,
-    RolesDirective
+    RolesDirective,
   ]
 })
 export class UsersModule { }

@@ -45,7 +45,8 @@ export class UserDetailComponent implements OnInit {
   }
 
 
-  constructor(private permisos: RolesDirective, private authService: AuthService, private masterDataService: MasterDataService, private rolesService: RolesService, private route: ActivatedRoute, private userService: UsersService, private router: Router, private formBuilder: FormBuilder) { 
+  constructor(private permisos: RolesDirective,
+      private authService: AuthService, private masterDataService: MasterDataService, private rolesService: RolesService, private route: ActivatedRoute, private userService: UsersService, private router: Router, private formBuilder: FormBuilder) { 
     this.masterData();
     this.formGroup = this.formBuilder.group({
       username:  ["", Validators.required],

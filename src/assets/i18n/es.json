@@ -1,0 +1,24 @@
+{
+    "BACK": "Atras",
+    "SAVE": "Guardar",
+    "DELETE": "Eliminar",
+
+    "USER_CONTROLLER":{
+        "UPDATE_USER": "Actualizar datos de usuario",
+        "NEW_USER":"Insertar un nuevo usuario",
+        "NAME_FIRST": "Primer Nombre",
+        "EMAIL": "Email",
+        "USERNAME": "Nombre de Usuario",
+        "BIRTHDATE": "Cumpleaños",
+        "PHONE": "# Movil",
+        "GENDER": "Genero",
+        "LANGUAGE":"Idioma",
+        "ROLES":"Roles asignados",
+
+        "ERROR": {
+            "REQUIRED_NAME": "Nombre es obligatorio.",
+            "REQUIRED_EMAIL": "Email  es obligatorio.",
+            "REQUIRED_USERNAME": "Username  es obligatorio."
+        }
+    }
+}

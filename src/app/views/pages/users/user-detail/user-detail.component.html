@@ -2,12 +2,13 @@
     <div class="col-md-12 stretch-card">
       <div class="card">
         <div class="card-body">
-          <h6 class="card-title">Form Grid</h6>
+          <h6 class="card-title" *ngIf="this.id !== null">{{ 'USER_CONTROLLER.UPDATE_USER' | translate }}</h6>
+          <h6 class="card-title" *ngIf="this.id === null">{{ 'USER_CONTROLLER.NEW_USER' | translate }}</h6>
             <form [formGroup]="formGroup" (ngSubmit)="saveData()">
               <div class="row">
                 <div class="col-sm-6">
                   <div class="mb-3">
-                    <label class="form-label">First Name</label>
+                    <label class="form-label">{{ 'USER_CONTROLLER.NAME_FIRST' | translate }}</label>
                     <input type="text" class="form-control" placeholder="Enter first name" formControlName="name" required>
                     
                     <div
@@ -18,14 +19,14 @@
                       class="alert alert-danger"
                     >
                       <div *ngIf="formGroup.controls['name'].errors">
-                        Name is required.
+                        {{ 'USER_CONTROLLER.ERROR.REQUIRED_NAME' | translate }}
                       </div>
                     </div>
                   </div>
                 </div><!-- Col -->
                 <div class="col-sm-6">
                   <div class="mb-3">
-                    <label class="form-label">Email</label>
+                    <label class="form-label">{{ 'USER_CONTROLLER.EMAIL' | translate }}</label>
                     <input type="email" class="form-control"  formControlName="email" required>
                       <div
                         *ngIf="
@@ -35,7 +36,7 @@
                         class="alert alert-danger"
                       >
                         <div *ngIf="formGroup.controls['email'].errors">
-                          Email is required.
+                          {{ 'USER_CONTROLLER.ERROR.REQUIRED_EMAIL' | translate }}
                         </div>
                       </div>
                   </div>
@@ -44,7 +45,7 @@
               <div class="row">
                 <div class="col-sm-4">
                   <div class="mb-3">
-                    <label class="form-label">Username</label>
+                    <label class="form-label">{{ 'USER_CONTROLLER.USERNAME' | translate }}</label>
                     <input type="text" class="form-control" formControlName="username"  placeholder="Username" required>
                     <div
                       *ngIf="
@@ -54,7 +55,7 @@
                       class="alert alert-danger"
                     >
                       <div *ngIf="formGroup.controls['username'].errors">
-                        Username is required.
+                        {{ 'USER_CONTROLLER.ERROR.REQUIRED_USERNAME' | translate }}
                       </div>
                     </div>
 
@@ -65,7 +66,7 @@
                 </div><!-- Col -->
                 <div class="col-sm-4">
                   <div class="mb-3">
-                    <label class="form-label">BirthDate</label>
+                    <label class="form-label">{{ 'USER_CONTROLLER.BIRTHDATE' | translate }}</label>
                     <div class="input-group">
                       <input class="form-control" placeholder="yyyy-mm-dd"
                          formControlName="birthDate">
@@ -76,7 +77,7 @@
                 </div><!-- Col -->
                 <div class="col-sm-4">
                   <div class="mb-3">
-                    <label class="form-label">Phone</label>
+                    <label class="form-label">{{ 'USER_CONTROLLER.PHONE' | translate }}</label>
                     <input type="text" class="form-control" formControlName="numberPhone"  placeholder="Enter zip code">
                   </div>
                 </div><!-- Col -->
@@ -85,7 +86,7 @@
               <div class="row">
                 <div class="col-sm-4">
                   <div class="mb-3">
-                    <label class="form-label">Gender</label>
+                    <label class="form-label">{{ 'USER_CONTROLLER.GENDER' | translate }}</label>
                     <ng-select #ngSelectGender [items]="genders"
                     bindLabel="name"
                     bindValue="id"
@@ -97,7 +98,7 @@
 
                 <div class="col-sm-4">
                   <div class="mb-3">
-                    <label class="form-label">Language</label>
+                    <label class="form-label">{{ 'USER_CONTROLLER.LANGUAGE' | translate }}</label>
                     <ng-select #ngSelectLanguage [items]="languages"
                     bindLabel="name"
                     bindValue="id"
@@ -110,7 +111,7 @@
 
               <div class="col-6">
                 <div class="mb-3">
-                    <label class="form-label">Roles</label>
+                    <label class="form-label">{{ 'USER_CONTROLLER.ROLES' | translate }}</label>
                     <ng-select #ngSelectRoles
                     [items]="roles"
                     [multiple]=true
@@ -126,8 +127,8 @@
                 </div>
               </div><!-- Col -->
 
-              <button type="button" class="btn btn-danger m-2" (click)="regresar()">Back</button>
-              <button  type="submit" class="btn btn-primary submit" [disabled]="!formGroup.valid || !permit">Save</button>
+              <button type="button" class="btn btn-danger m-2" (click)="regresar()">{{ 'BACK' | translate }}</button>
+              <button  type="submit" class="btn btn-primary submit" [disabled]="!formGroup.valid || !permit">{{ 'SAVE' | translate }}</button>
             </form>
 
              
