@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ColumnMode } from '@swimlane/ngx-datatable';
 import { DataList, ListUsers } from 'src/app/class/user.interface';
+import { RolesDirective } from 'src/app/core/directives/roles.directive';
 import Swal from 'sweetalert2';
 import { UsersService } from '../../services/users.service';
 
@@ -22,7 +23,10 @@ export class UserListComponent implements OnInit {
   sortDir: string = "desc";
   numbers: number[];
 
-  constructor(private userService: UsersService, private router: Router) {
+  get permit():boolean{
+    return this.permisos.checkRoles()
+  }
+  constructor(private permisos: RolesDirective, private userService: UsersService, private router: Router) {
   }
 
   ngOnInit(): void {
@@ -35,7 +39,6 @@ export class UserListComponent implements OnInit {
 
   onChange(event: any){
     this.pageSize = event.target.value;
-    console.log(this.pageSize)
     this.getUsers();
   }
 

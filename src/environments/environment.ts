@@ -6,6 +6,15 @@ export const environment = {
   production: false
 };
 
+
+export const ROLES = {
+  ROLE_SUPER_ROOT: `ROLE_SUPER_ROOT`,
+  ROLE_ADMIN: `ROLE_ADMIN`,
+  ROLE_EDITOR: `ROLE_EDITOR`,
+  ROLE_VISITANTE: `ROLE_VISITANTE`,
+  ROLE_CLIENTE: `ROLE_CLIENTE`
+}
+
 export const URL_BASE = `http://localhost:8080/api/`;
 
 export const API_ROUTES = {
@@ -27,7 +36,6 @@ export const API_ROUTES = {
   //MASTER DATA
   GENDERS: `master-data/genders`,//Generos
   LANGUAGES: `master-data/languages`,//Generos
-
 
 };
 

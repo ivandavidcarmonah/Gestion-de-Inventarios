@@ -4,9 +4,11 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { NgSelectComponent } from '@ng-select/ng-select';
 import { IGender, ILanguage } from 'src/app/class/master-data';
-import {  UserDetail } from 'src/app/class/user.interface';
+import {  Role, UserDetail } from 'src/app/class/user.interface';
+import { RolesDirective } from 'src/app/core/directives/roles.directive';
 import { IRoles } from 'src/app/interfaces/roles.interface';
 import Swal from 'sweetalert2';
+import { AuthService } from '../../services/auth.service';
 import { MasterDataService } from '../../services/master-data.service';
 import { RolesService } from '../../services/roles.service';
 import { UsersService } from '../../services/users.service';
@@ -22,9 +24,13 @@ export class UserDetailComponent implements OnInit {
   @ViewChild('ngSelectGender') ngSelectGender: NgSelectComponent;
   @ViewChild('ngSelectLanguage') ngSelectLanguage: NgSelectComponent;
 
+
+
   public id: string | null;
   public formGroup: FormGroup;
   public userDetail: UserDetail;
+  
+  currentRoles?: Role[] = this.authService.userValue?.roles;
 
   roles: IRoles[] = [];
   genders: IGender[];
@@ -34,10 +40,12 @@ export class UserDetailComponent implements OnInit {
   selectedGender: number;
   selectedLanguage: number;
 
+  get permit():boolean{
+    return this.permisos.checkRoles()
+  }
 
 
-
-  constructor(private datePipe: DatePipe, private masterDataService: MasterDataService, private rolesService: RolesService, private route: ActivatedRoute, private userService: UsersService, private router: Router, private formBuilder: FormBuilder) { 
+  constructor(private permisos: RolesDirective, private authService: AuthService, private masterDataService: MasterDataService, private rolesService: RolesService, private route: ActivatedRoute, private userService: UsersService, private router: Router, private formBuilder: FormBuilder) { 
     this.masterData();
     this.formGroup = this.formBuilder.group({
       username:  ["", Validators.required],
@@ -81,7 +89,6 @@ export class UserDetailComponent implements OnInit {
         this.getUserById();
       }
     });
-
   }
   getUserById() {
     this.userService.getUserById(this.id)

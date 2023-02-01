@@ -9,6 +9,7 @@ import { UserDetailComponent } from './user-detail/user-detail.component';
 import { UserListComponent } from './user-list/user-list.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { RolesDirective } from 'src/app/core/directives/roles.directive';
 
 const routes: Routes = [
   {
@@ -37,7 +38,8 @@ const routes: Routes = [
 ]
 
 @NgModule({
-  declarations: [UsersComponent, UserDetailComponent, UserListComponent],
+  declarations: [UsersComponent, UserDetailComponent, UserListComponent,
+   ],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
@@ -50,7 +52,8 @@ const routes: Routes = [
 
   ],
   providers:[
-    DatePipe
+    DatePipe,
+    RolesDirective
   ]
 })
 export class UsersModule { }

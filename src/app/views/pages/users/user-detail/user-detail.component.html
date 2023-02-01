@@ -127,7 +127,7 @@
               </div><!-- Col -->
 
               <button type="button" class="btn btn-danger m-2" (click)="regresar()">Back</button>
-              <button type="submit" class="btn btn-primary submit" [disabled]="!formGroup.valid">Save</button>
+              <button  type="submit" class="btn btn-primary submit" [disabled]="!formGroup.valid || !permit">Save</button>
             </form>
 
              

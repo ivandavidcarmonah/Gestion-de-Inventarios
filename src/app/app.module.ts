@@ -13,6 +13,7 @@ import { ErrorPageComponent } from './views/pages/error-page/error-page.componen
 
 import { HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
 import { JwtInterceptor } from './core/interceptor/jwt.interceptor';
+import { RolesDirective } from './core/directives/roles.directive';
 
 @NgModule({
   declarations: [

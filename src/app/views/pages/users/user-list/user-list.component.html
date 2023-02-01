@@ -5,7 +5,7 @@
   </nav>
   <div class="row justify-content-end">
     <div class="col-12 col-lg-2 col-xl-2 col-xxl-2 col-md-3 m-2">
-        <button type="button" routerLink="/users/insert-user" class="btn btn-primary btn-icon-text float-end">
+        <button type="button" routerLink="/users/insert-user" class="btn btn-primary btn-icon-text float-end" [disabled]="!permit">
           <i class="feather icon-check-square btn-icon-prepend"></i>
           Nuevo 
         </button>
@@ -65,7 +65,7 @@
                         </span>
                       </td>
                       <td class="d-flex align-items-center justify-content-center">
-                        <button type="button" (click)="deleteUser(item)" class="btn btn-danger btn-sm btn-icon" placement="top" ngbTooltip="Eliminar" >
+                        <button type="button" (click)="deleteUser(item)" [disabled]="!permit" class="btn btn-danger btn-sm btn-icon" placement="top" ngbTooltip="Eliminar" >
                           <i class="mdi mdi-delete-forever"></i>
                         </button>
                         <button type="button" (click)="updateUser(item)" class="btn btn-primary btn-sm btn-icon m-2" placement="top" ngbTooltip="Editar">

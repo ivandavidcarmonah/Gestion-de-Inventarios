@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { BaseComponent } from './views/layout/base/base.component';
 import { AuthGuard } from './core/guard/auth.guard';
 import { ErrorPageComponent } from './views/pages/error-page/error-page.component';
+import { ROLES } from 'src/environments/environment';
 
 
 const routes: Routes = [
@@ -14,11 +15,13 @@ const routes: Routes = [
       {
         path: 'dashboard',
         loadChildren: () => import('./views/pages/dashboard/dashboard.module').then(m => m.DashboardModule),
+        data: { role: [ROLES.ROLE_SUPER_ROOT, ROLES.ROLE_EDITOR, ROLES.ROLE_ADMIN, ROLES.ROLE_VISITANTE, ROLES.ROLE_CLIENTE]},
         canActivate: [AuthGuard],
       },
       {
         path: 'users',
         loadChildren: () => import('./views/pages/users/users.module').then(m => m.UsersModule),
+        data: { role: [ROLES.ROLE_SUPER_ROOT, ROLES.ROLE_EDITOR, ROLES.ROLE_ADMIN, ROLES.ROLE_VISITANTE, ROLES.ROLE_CLIENTE]},
         canActivate: [AuthGuard],
       },
       {
