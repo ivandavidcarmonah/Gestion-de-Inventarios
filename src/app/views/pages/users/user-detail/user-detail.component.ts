@@ -8,10 +8,10 @@ import {  Role, UserDetail } from 'src/app/class/user.interface';
 import { RolesDirective } from 'src/app/core/directives/roles.directive';
 import { IRoles } from 'src/app/interfaces/roles.interface';
 import Swal from 'sweetalert2';
-import { AuthService } from '../../services/auth.service';
-import { MasterDataService } from '../../services/master-data.service';
-import { RolesService } from '../../services/roles.service';
-import { UsersService } from '../../services/users.service';
+import { AuthService } from '../../../services/auth.service';
+import { MasterDataService } from '../../../services/master-data.service';
+import { RolesService } from '../../../services/roles.service';
+import { UsersService } from '../../../services/users.service';
 
 @Component({
   selector: 'app-user-detail',

@@ -4,7 +4,7 @@ import { ColumnMode } from '@swimlane/ngx-datatable';
 import { DataList, ListUsers } from 'src/app/class/user.interface';
 import { RolesDirective } from 'src/app/core/directives/roles.directive';
 import Swal from 'sweetalert2';
-import { UsersService } from '../../services/users.service';
+import { UsersService } from '../../../services/users.service';
 
 @Component({
   selector: 'app-user-list',

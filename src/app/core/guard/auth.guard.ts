@@ -3,7 +3,7 @@ import { CanActivate, RouterStateSnapshot, ActivatedRouteSnapshot } from '@angul
 import { Router } from '@angular/router';
 import { Role } from 'src/app/class/user.interface';
 import { IRoles } from 'src/app/interfaces/roles.interface';
-import { AuthService } from 'src/app/views/pages/services/auth.service';
+import { AuthService } from 'src/app/views/services/auth.service';
 import { API_ROUTES } from 'src/environments/environment';
 
 @Injectable()

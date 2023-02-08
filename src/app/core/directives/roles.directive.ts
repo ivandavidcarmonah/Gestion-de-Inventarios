@@ -1,6 +1,6 @@
 import { Directive, Input, OnInit, Output } from '@angular/core';
 import { Role } from 'src/app/class/user.interface';
-import { AuthService } from 'src/app/views/pages/services/auth.service';
+import { AuthService } from 'src/app/views/services/auth.service';
 import { ROLES } from 'src/environments/environment';
 
 @Directive({

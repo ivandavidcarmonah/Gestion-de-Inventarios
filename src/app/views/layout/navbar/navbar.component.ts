@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef, Inject, Renderer2, Output } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { Router } from '@angular/router';
-import { AuthService } from '../../pages/services/auth.service';
+import { AuthService } from '../../services/auth.service';
 import { UserDTO } from 'src/app/interfaces/auth-class';
 import { EventEmitter } from '@angular/core';
 

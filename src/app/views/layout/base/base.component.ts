@@ -1,7 +1,7 @@
 import { Component, Input, OnInit, Output } from '@angular/core';
 import { Router, RouteConfigLoadStart, RouteConfigLoadEnd } from '@angular/router';
 import { EventEmitter } from '@angular/core';
-import { AuthService } from '../../pages/services/auth.service';
+import { AuthService } from '../../services/auth.service';
 import {TranslateService} from '@ngx-translate/core';
 
 @Component({

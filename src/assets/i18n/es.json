@@ -20,5 +20,28 @@
             "REQUIRED_EMAIL": "Email  es obligatorio.",
             "REQUIRED_USERNAME": "Username  es obligatorio."
         }
+    },
+
+    "PRODUCT_CONTROLLER":{
+        "UPDATE_PRODUCT": "Actualizar datos de producto",
+        "NEW_PRODUCT":"Agregar un nuevo producto",
+        "DESCRIPTION": "Descripción",
+        "PRICE": "Precio",
+        "PREPARESIN": "Preparacion",
+        "TYPE_PRODUCT": "Tipo/Categoria",
+        "ALLERGIES": "Alergias",
+        "VALID": "Valido",
+        "NAME": "Nombre",
+
+        "NAME_PLACEHOLDER": "Nombre de Producto",
+        "TYPE_PRODUCT_PLACEHOLDER": "Seleccione tipo",
+        "ALLERGIES_PLACEHOLDER": "Alergias a este producto...",
+        "DESCRIPTION_PLACEHOLDER": "Descripción a este producto...",
+
+        "ERROR": {
+            "REQUIRED_NAME": "Nombre de producto es obligatorio.",
+            "REQUIRED_PRICE": "Precio  es obligatorio.",
+            "REQUIRED_DESCRIPTION": "Descripcion  es obligatorio."
+        }
     }
 }

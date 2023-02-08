@@ -6,7 +6,7 @@ import {
   HttpInterceptor
 } from '@angular/common/http';
 import {Observable} from 'rxjs';
-import { LocalStorageService } from 'src/app/views/pages/services/local-storage.service';
+import { LocalStorageService } from 'src/app/views/services/local-storage.service';
 
 @Injectable()
 export class JwtInterceptor implements HttpInterceptor {

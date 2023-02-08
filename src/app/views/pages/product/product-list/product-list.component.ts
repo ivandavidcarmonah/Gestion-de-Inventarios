@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { DataList, ProductResponseDTO } from 'src/app/class/product.interface';
 import { RolesDirective } from 'src/app/core/directives/roles.directive';
 import Swal from 'sweetalert2';
-import { ProductService } from '../../services/product.service';
+import { ProductService } from '../../../services/product.service';
 
 @Component({
   selector: 'app-product-list',
@@ -48,7 +48,7 @@ export class ProductListComponent implements OnInit {
   }
 
   updateItem(item: DataList){
-    this.router.navigate(['products/detail-products/'+item.idProduct]);
+    this.router.navigate(['products/detail-product/'+item.idProduct]);
   }
 
 

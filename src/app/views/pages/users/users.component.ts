@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ColumnMode } from '@swimlane/ngx-datatable';
 import { ListUsers } from 'src/app/class/user.interface';
-import { UsersService } from '../services/users.service';
+import { UsersService } from '../../services/users.service';
 import { DataTable } from "simple-datatables";
 
 @Component({

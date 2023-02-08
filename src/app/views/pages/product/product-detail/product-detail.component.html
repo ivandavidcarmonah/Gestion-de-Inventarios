@@ -1,1 +1,107 @@
-<p>product-detail works!</p>
+<div class="row">
+    <div class="col-md-12 stretch-card">
+      <div class="card">
+        <div class="card-body">
+          <h6 class="card-title" *ngIf="this.id !== null">{{ 'PRODUCT_CONTROLLER.UPDATE_PRODUCT' | translate }}</h6>
+          <h6 class="card-title" *ngIf="this.id === null">{{ 'PRODUCT_CONTROLLER.NEW_PRODUCT' | translate }}</h6>
+            <form [formGroup]="formGroup" (ngSubmit)="saveData()">
+              <div class="row">
+                        <div class="col-sm-6">
+                        <div class="mb-3">
+                            <label class="form-label">{{ 'PRODUCT_CONTROLLER.NAME' | translate }}</label>
+                            <input type="text" class="form-control" placeholder="{{ 'PRODUCT_CONTROLLER.NAME_PLACEHOLDER' | translate }}" formControlName="name" required>
+                            
+                            <div
+                            *ngIf="
+                                formGroup.controls['name'].invalid &&
+                                (formGroup.controls['name'].dirty || formGroup.controls['name'].touched)
+                            "
+                            class="alert alert-danger"
+                            >
+                            <div *ngIf="formGroup.controls['name'].errors">
+                                {{ 'PRODUCT_CONTROLLER.ERROR.REQUIRED_NAME' | translate }}
+                            </div>
+                            </div>
+                        </div>
+                        </div><!-- Col -->
+                        <div class="col-sm-6">
+                            <div class="mb-3">
+                                <label class="form-label">{{ 'PRODUCT_CONTROLLER.DESCRIPTION' | translate }}</label>
+                                <input type="text" class="form-control"  formControlName="description" placeholder="{{ 'PRODUCT_CONTROLLER.DESCRIPTION_PLACEHOLDER' | translate }}" equired>
+                                <div
+                                    *ngIf="
+                                    formGroup.controls['description'].invalid &&
+                                    (formGroup.controls['description'].dirty || formGroup.controls['description'].touched)
+                                    "
+                                    class="alert alert-danger"
+                                >
+                                    <div *ngIf="formGroup.controls['description'].errors">
+                                    {{ 'PRODUCT_CONTROLLER.ERROR.REQUIRED_DESCRIPTION' | translate }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!-- Col -->
+                    </div><!-- Row -->
+                
+                    <div class="row">
+                        <div class="col-sm-4">
+                        <div class="mb-3">
+                            <label class="form-label">{{ 'PRODUCT_CONTROLLER.PRICE' | translate }}</label>
+                            <input type="number" class="form-control" suffix=" $" mask="0000" formControlName="price"  required/>
+                            <div
+                            *ngIf="
+                                formGroup.controls['price'].invalid &&
+                                (formGroup.controls['price'].dirty || formGroup.controls['price'].touched)
+                            "
+                            class="alert alert-danger"
+                            >
+                            <div *ngIf="formGroup.controls['price'].errors">
+                                {{ 'PRODUCT_CONTROLLER.ERROR.REQUIRED_PRICE' | translate }}
+                            </div>
+                            </div>
+                        </div>
+                        </div><!-- Col -->
+
+                        <div class="col-sm-4">
+                            <div class="mb-3">
+                                <label class="form-label">{{ 'PRODUCT_CONTROLLER.PREPARESIN' | translate }}</label>
+                                <input type="text" class="form-control"  formControlName="preparesin"  required/>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4">
+                            <div class="mb-3">
+                            <label class="form-label">{{ 'PRODUCT_CONTROLLER.TYPE_PRODUCT' | translate }}</label>
+                            <input type="text" class="form-control"  formControlName="typeProduct" placeholder="{{ 'PRODUCT_CONTROLLER.TYPE_PRODUCT_PLACEHOLDER' | translate }}" equired>
+                            </div>
+                        </div><!-- Col -->
+
+                        <div class="col-sm-4">
+                            <div class="mb-3">
+                                <label label class="form-label">{{ 'PRODUCT_CONTROLLER.ALLERGIES' | translate }}</label>
+                                <input type="text" class="form-control"  formControlName="allergies" placeholder="{{ 'PRODUCT_CONTROLLER.ALLERGIES_PLACEHOLDER' | translate }}" equired>
+                            </div>
+                        </div><!-- Col -->
+                    </div><!-- Col -->
+
+                    <div class="mb-4">
+                        <div class="form-check form-check-inline">
+                            <input type="checkbox" class="form-check-input" id="checkInline" checked>
+                            <label class="form-check-label" for="checkInline">
+                                {{ 'PRODUCT_CONTROLLER.VALID' | translate }}
+                            </label>
+                        </div>
+                    </div>
+
+                <button type="button" class="btn btn-danger m-2" (click)="regresar()">{{ 'BACK' | translate }}</button>
+                <button  type="submit" class="btn btn-primary submit" [disabled]="!formGroup.valid || !permit">{{ 'SAVE' | translate }}</button>
+
+            </form>
+
+             
+
+
+        </div>
+      </div>
+    </div>
+  </div>

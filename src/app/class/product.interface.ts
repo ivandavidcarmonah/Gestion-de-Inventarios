@@ -40,3 +40,22 @@ export class Role {
     name: string;
 }
 
+
+export class ProductDTO {
+    name:        string;
+    description: string;
+    preparesin:  string;
+    allergies:   string;
+    price:       number;
+    picture:     null;
+    typeProduct: null;
+    company:     null;
+    creaDate:    null;
+    modDate:     null;
+    creaUser:    number;
+    modUser:     number;
+    user:        User;
+    valid:       boolean;
+    spent:       boolean;
+    idProduct:   number;
+}
