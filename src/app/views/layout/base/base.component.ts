@@ -24,11 +24,7 @@ export class BaseComponent implements OnInit {
       } else if (event instanceof RouteConfigLoadEnd) {
         this.isLoading = false;
       }
-    });
-
-    
-
-    
+    });    
   }
 
   ngOnInit(): void {

@@ -25,6 +25,12 @@ const routes: Routes = [
         canActivate: [AuthGuard],
       },
       {
+        path: 'products',
+        loadChildren: () => import('./views/pages/product/product.module').then(m => m.ProductModule),
+        data: { role: [ROLES.ROLE_SUPER_ROOT, ROLES.ROLE_EDITOR, ROLES.ROLE_ADMIN, ROLES.ROLE_VISITANTE, ROLES.ROLE_CLIENTE]},
+        canActivate: [AuthGuard],
+      },
+      {
         path: 'apps',
         loadChildren: () => import('./views/pages/apps/apps.module').then(m => m.AppsModule)
       },

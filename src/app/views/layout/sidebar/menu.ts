@@ -29,6 +29,25 @@ export const MENU: MenuItem[] = [
     ]
   },
   {
+    label: 'Stock',
+    isTitle: true
+  },
+  {
+    label: 'Products',
+    icon: 'server',
+    subItems: [
+      {
+        label: 'Listado',
+        link: '/products/list-product',
+      }, 
+      {
+        label: 'Insertar',
+        link: '/products/insert-product',
+      },
+    ]
+  },
+
+  {
     label: 'Web Apps',
     isTitle: true
   },

@@ -1,0 +1,115 @@
+<nav class="page-breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item active"><a routerLink=".">Users</a></li>
+    </ol>
+  </nav>
+  <div class="row justify-content-end">
+    <div class="col-12 col-lg-2 col-xl-2 col-xxl-2 col-md-3 m-2">
+        <button type="button" routerLink="/users/insert-user" class="btn btn-primary btn-icon-text float-end" [disabled]="!permit">
+          <i class="feather icon-check-square btn-icon-prepend"></i>
+          Nuevo 
+        </button>
+    </div>
+   
+  </div>
+  
+
+  <div class="row">
+    <div class="col-md-12 stretch-card">
+      <div class="card">
+        <div class="card-body">
+          <h6 class="card-title">Data Table Users</h6>
+
+          <div class="dataTable-wrapper dataTable-loading no-footer sortable searchable fixed-columns">
+            <div class="table-responsive">
+
+              <div class="dataTable-top justify-content betwent">
+                <div class="dataTable-dropdown">
+                  <label>
+                    <select class="dataTable-selector"  (change)="onChange($event)">
+                      <option value="5" selected>5</option>
+                      <option value="10" >10</option>
+                      <option value="15">15</option>
+                      <option value="20">20</option>
+                      <option value="25">25</option>
+                    </select> entries per page
+                  </label>
+                  </div>
+                  <div class="dataTable-search">
+                    <input class="dataTable-input" placeholder="Search..." type="text">
+                  </div>
+              </div>
+              
+              <div class="dataTable-container">
+                <table id="dataTableExample" class="table" *ngIf="productResponseDTO.dataLength">
+              
+                  <thead>
+                    <tr >
+                      <th></th>
+                      <th>Product</th>
+                      <th>Description</th>
+                      <th>Created By</th>
+                      <th>Update Date</th>
+                      <th>Price Unit</th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let item of productResponseDTO.dataList"  style="vertical-align: baseline;">
+                      <td></td>
+                      <td>{{item.name}}</td>
+                      <td>{{item.description}}</td>
+                      <td>{{item.user.name}}</td>
+                      <td>{{item.creaDate}}</td>
+                      <td>${{item.price}}</td>
+                      <td>
+                       
+                      </td>
+                      <td class="d-flex align-items-center justify-content-center">
+                        <button type="button" (click)="deleteItem(item)" [disabled]="!permit" class="btn btn-danger btn-sm btn-icon" placement="top" ngbTooltip="Eliminar" >
+                            <i class="mdi mdi-delete-forever"></i>
+                          </button>
+                          <button type="button" (click)="updateItem(item)" class="btn btn-primary btn-sm btn-icon m-2" placement="top" ngbTooltip="Editar">
+                            <i class="feather icon-edit"></i>
+                          </button>
+                        
+                      </td>
+                    </tr>
+                   
+                  </tbody>
+                  <tfoot>
+                    <tr>
+                      <th></th>
+                      <th></th>
+                      <th></th>
+                      <th></th>
+                      <th></th>
+                      <th></th>
+                    </tr>
+                  </tfoot>
+                </table>
+              </div>
+  
+              <div class="dataTable-bottom">
+                <div class="dataTable-info">
+                  <span *ngIf="productResponseDTO.dataLength">
+
+                  </span>
+                  Page {{this.numberPage+1}} of {{productResponseDTO.totalPages}} 
+                </div>
+                <nav class="dataTable-pagination">
+                  <ul class="dataTable-pagination-list">
+                    <li class="{{this.numberPage == item? 'active': ''}}" *ngFor="let item of numbers; let i = index" ><a (click)="changePage(item)" data-page="item">{{item+1}}</a></li>
+                    <li class="pager"><a data-page="2">›</a></li>
+                  </ul>
+                </nav>
+              </div>
+             
+            </div>
+
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </div>

@@ -30,6 +30,13 @@ export const API_ROUTES = {
   USER_INSERT: `user/new-user/`,
   USER_DELETE: `user/delete/`,
 
+  //PRODUCT CONTROLLER
+  PRODUCT_LIST: `product/list-products`,
+  PRODUCT_BYID: `product/product/`,
+  PRODUCT_UPDATE: `product/update-product/`,
+  PRODUCT_INSERT: `product/new-product/`,
+  PRODUCT_DELETE: `product/delete/`,
+
   //ROLES CONTROLLER
   ROLES_LIST: `roles/list-roles`,
 
