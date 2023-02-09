@@ -1,13 +1,13 @@
 <nav class="page-breadcrumb">
     <ol class="breadcrumb">
-      <li class="breadcrumb-item active"><a routerLink=".">Products</a></li>
+      <li class="breadcrumb-item active"><a routerLink=".">{{ 'PRODUCT_CONTROLLER.TITLE' | translate }}</a></li>
     </ol>
   </nav>
   <div class="row justify-content-end">
     <div class="col-12 col-lg-2 col-xl-2 col-xxl-2 col-md-3 m-2">
         <button type="button" routerLink="/products/insert-product" class="btn btn-primary btn-icon-text float-end" [disabled]="!permit">
           <i class="feather icon-check-square btn-icon-prepend"></i>
-          Nuevo 
+          {{ 'PRODUCT_CONTROLLER.NUEVO_BOTON' | translate }} 
         </button>
     </div>
    
@@ -18,7 +18,11 @@
     <div class="col-md-12 stretch-card">
       <div class="card">
         <div class="card-body">
-          <h6 class="card-title">Productos Registrados</h6>
+          <h6 class="card-title">{{ 'PRODUCT_CONTROLLER.REGISTERED' | translate }}</h6>
+          <p class="card-info">
+            <i class="mdi mdi-information"></i>
+            <i>{{ 'PRODUCT_CONTROLLER.INFO' | translate }}</i>
+          </p>
 
           <div class="dataTable-wrapper dataTable-loading no-footer sortable searchable fixed-columns">
             <div class="table-responsive">
@@ -46,11 +50,11 @@
                   <thead>
                     <tr >
                       <th></th>
-                      <th>Product</th>
-                      <th>Description</th>
-                      <th>Created By</th>
-                      <th>Update Date</th>
-                      <th>Price Unit</th>
+                      <th>{{ 'PRODUCT_CONTROLLER.NAME' | translate }}</th>
+                      <th>{{ 'PRODUCT_CONTROLLER.DESCRIPTION' | translate }}</th>
+                      <th>{{ 'PRODUCT_CONTROLLER.CREATED_BY' | translate }}</th>
+                      <th>{{ 'PRODUCT_CONTROLLER.UPDATE_DATE' | translate }}</th>
+                      <th>{{ 'PRODUCT_CONTROLLER.PRICE_UNIT' | translate }}</th>
                       <th></th>
                     </tr>
                   </thead>
@@ -66,10 +70,10 @@
                        
                       </td>
                       <td class="d-flex align-items-center justify-content-center">
-                        <button type="button" (click)="deleteItem(item)" [disabled]="!permit" class="btn btn-danger btn-sm btn-icon" placement="top" ngbTooltip="Eliminar" >
+                        <button type="button" (click)="deleteItem(item)" [disabled]="!permit" class="btn btn-danger btn-sm btn-icon" placement="top" ngbTooltip="{{ 'DELETE' | translate }}" >
                             <i class="mdi mdi-delete-forever"></i>
                           </button>
-                          <button type="button" (click)="updateItem(item)" class="btn btn-primary btn-sm btn-icon m-2" placement="top" ngbTooltip="Editar">
+                          <button type="button" (click)="updateItem(item)" class="btn btn-primary btn-sm btn-icon m-2" placement="top" ngbTooltip="{{ 'EDIT' | translate }}">
                             <i class="feather icon-edit"></i>
                           </button>
                         

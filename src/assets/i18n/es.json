@@ -2,6 +2,7 @@
     "BACK": "Atras",
     "SAVE": "Guardar",
     "DELETE": "Eliminar",
+    "EDIT":"Editar",
 
     "USER_CONTROLLER":{
         "UPDATE_USER": "Actualizar datos de usuario",
@@ -23,6 +24,15 @@
     },
 
     "PRODUCT_CONTROLLER":{
+        "NUEVO_BOTON":"Registrar",
+        "TITLE": "Gestion de existencias",
+        "REGISTERED":"Existencias registradas",
+        "INFO":"Productos ó existencias registradas no indican la cantidad que se tienen realmente en el stock de almacen",
+        "CREATED_BY":"Creado por",
+        "UPDATE_DATE":"Actualizado",
+        "PRICE_UNIT":"Precio por unidad",
+
+        "NAME": "Nombre",
         "UPDATE_PRODUCT": "Actualizar datos de producto",
         "NEW_PRODUCT":"Agregar un nuevo producto",
         "DESCRIPTION": "Descripción",
@@ -31,7 +41,6 @@
         "TYPE_PRODUCT": "Tipo/Categoria",
         "ALLERGIES": "Alergias",
         "VALID": "Valido",
-        "NAME": "Nombre",
 
         "NAME_PLACEHOLDER": "Nombre de Producto",
         "TYPE_PRODUCT_PLACEHOLDER": "Seleccione tipo",
