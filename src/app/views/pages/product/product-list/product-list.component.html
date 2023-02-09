@@ -60,7 +60,12 @@
                   </thead>
                   <tbody>
                     <tr *ngFor="let item of productResponseDTO.dataList"  style="vertical-align: baseline;">
-                      <td></td>
+                      <td class=" align-items-center justify-content-center">
+                        <div class="  align-items-center justify-content-center ">
+                          <img class="img-xs rounded-circle" [src]="item.picture  | Imagen: img_rute" ngbTooltip="{{item.description}}" >
+                          <!-- <img class="img-xs rounded-circle" src="https://via.placeholder.com/30x30" placement="top"  ngbTooltip="{{item.description}}"> -->
+                        </div>
+                      </td>
                       <td>{{item.name}}</td>
                       <td>{{item.description}}</td>
                       <td>{{item.user.name}}</td>
@@ -69,7 +74,7 @@
                       <td>
                        
                       </td>
-                      <td class="d-flex align-items-center justify-content-center">
+                      <td class=" align-items-center justify-content-center">
                         <button type="button" (click)="deleteItem(item)" [disabled]="!permit" class="btn btn-danger btn-sm btn-icon" placement="top" ngbTooltip="{{ 'DELETE' | translate }}" >
                             <i class="mdi mdi-delete-forever"></i>
                           </button>

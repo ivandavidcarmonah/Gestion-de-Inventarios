@@ -84,4 +84,10 @@ export class ProductService {
     
   }
 
+  saveImg(multipartFile: File, id: any) {
+    let formdata = new FormData();
+    formdata.append('file', multipartFile);
+    return this.http.post<any>(`${URL_BASE}${API_ROUTES.PRODUCT_SAVE_IMAGEN}${id}`,formdata)
+  }
+
 }

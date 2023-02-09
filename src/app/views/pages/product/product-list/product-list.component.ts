@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { DataList, ProductResponseDTO } from 'src/app/class/product.interface';
 import { RolesDirective } from 'src/app/core/directives/roles.directive';
+import { API_ROUTES } from 'src/environments/environment';
 import Swal from 'sweetalert2';
 import { ProductService } from '../../../services/product.service';
 
@@ -12,6 +13,7 @@ import { ProductService } from '../../../services/product.service';
 })
 export class ProductListComponent implements OnInit {
 
+  img_rute = API_ROUTES.PRODUCT_GET_IMAGEN;
   rows = [];
   loadingIndicator = true;
   reorderable = true;

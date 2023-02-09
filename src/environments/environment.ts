@@ -36,6 +36,8 @@ export const API_ROUTES = {
   PRODUCT_UPDATE: `product/update-product/`,
   PRODUCT_INSERT: `product/new-product/`,
   PRODUCT_DELETE: `product/delete/`,
+  PRODUCT_GET_IMAGEN: 'product/get-file/',
+  PRODUCT_SAVE_IMAGEN: 'product/save-file/',
 
   //ROLES CONTROLLER
   ROLES_LIST: `roles/list-roles`,

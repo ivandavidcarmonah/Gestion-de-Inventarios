@@ -11,6 +11,8 @@ import { FeatherIconModule } from 'src/app/core/feather-icon/feather-icon.module
 import { RolesDirective } from 'src/app/core/directives/roles.directive';
 import { ProductListComponent } from './product-list/product-list.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
+import { GetImagen } from 'src/app/pipes/get-files';
+import { AngularCropperjsModule } from 'angular-cropperjs';
 
 const routes: Routes = [
   {
@@ -42,6 +44,7 @@ const routes: Routes = [
   declarations: [
     ProductComponent,
     ProductListComponent,
+    GetImagen,
     ProductDetailComponent
   ],
   imports: [
@@ -53,7 +56,8 @@ const routes: Routes = [
     ReactiveFormsModule,
     NgbModule,
     NgSelectModule,
-    TranslateModule
+    TranslateModule,
+    AngularCropperjsModule
   ],
   providers:[
     DatePipe,

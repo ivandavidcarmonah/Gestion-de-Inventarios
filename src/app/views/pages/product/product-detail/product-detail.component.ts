@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
+import { CropperComponent } from 'angular-cropperjs';
 import { ProductDTO } from 'src/app/class/product.interface';
 import { RolesDirective } from 'src/app/core/directives/roles.directive';
 import { ProductService } from 'src/app/views/services/product.service';
+import { API_ROUTES } from 'src/environments/environment';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -12,9 +14,20 @@ import Swal from 'sweetalert2';
   styleUrls: ['./product-detail.component.scss']
 })
 export class ProductDetailComponent implements OnInit {
+
+  @ViewChild('angularCropper') public angularCropper: CropperComponent;
+  img_rute = API_ROUTES.PRODUCT_GET_IMAGEN;
+  resultImage: any;
+
+  
+  // Plugin configuration
+  config = {
+    zoomable: false
+  };
   public id: string | null;
   public detail: ProductDTO;
   public formGroup: FormGroup;
+  file: File;
 
   get permit():boolean{
     return this.permisos.checkRoles()
@@ -42,6 +55,37 @@ export class ProductDetailComponent implements OnInit {
         this.getById();
       }
     });
+  }
+
+  handleFileInput(event: any) {
+    if (event.target.files.length) {
+        this.file = event.target.files[0];
+    }
+  }
+
+  cropImage() {
+      
+
+    this.service.saveImg(this.file, this.detail.idProduct).subscribe({
+      next: (res => {
+        this.detail = res
+       
+      }),
+      error: (err => {
+        console.log(err)
+        Swal.fire("Error", err.error, "error")
+      }),
+      complete: () => {
+        if (this.id !== null) {
+          Swal.fire("Imagen Actualizda", "imagen salvada correctamente", "success")
+        }
+        else {
+          Swal.fire("Creado", "Creado correctamente", "success")
+        }
+        this.id = this.detail.idProduct.toString();
+        
+      },
+    } )
   }
 
   getById() {

@@ -84,6 +84,33 @@
                         </div><!-- Col -->
                     </div><!-- Col -->
 
+
+                    <div class="row" *ngIf="detail !== undefined">
+                        <div class="col-md-12 grid-margin stretch-card">
+                          <div class="card">
+                            <div class="card-body">
+                              <div class="row">
+                                <div class="col-md-8">
+                                  <div class="mb-3">
+                                    <input class="form-control" type="file" id="cropperImageUpload" (change)="handleFileInput($event)">
+                                  </div>
+                                  
+                                  <div class="d-flex justify-content-between align-items-center flex-wrap">
+                                    <div class="d-flex align-items-center flex-wrapp me-2 mt-3">
+                                      <button class="btn btn-primary crop mb-2 mb-md-0" (click)="cropImage()">Save imagen</button>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="col-md-4 ms-auto">
+                                  <img class="img-md w-100" [src]="detail.picture  | Imagen: img_rute" ngbTooltip="{{detail.description}}" >
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+
                     <div class="mb-4">
                         <div class="form-check form-check-inline">
                             <input type="checkbox" class="form-check-input" id="checkInline" checked>
