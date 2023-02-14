@@ -17,7 +17,7 @@ export class DataList {
     typeProduct: string;
     company:     string;
     creaDate:    string;
-    modDate:     string;
+    update_date:     string;
     creaUser:    number;
     modUser:     number;
     user:        User;
@@ -42,7 +42,9 @@ export class Role {
 
 
 export class ProductDTO {
+
     name:        string;
+    barCode:        string;
     description: string;
     preparesin:  string;
     allergies:   string;
@@ -51,7 +53,7 @@ export class ProductDTO {
     typeProduct: string;
     company:     string;
     creaDate:    string;
-    modDate:     string;
+    update_date:     string;
     creaUser:    number;
     modUser:     number;
     user:        User;

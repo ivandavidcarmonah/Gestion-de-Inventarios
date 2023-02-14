@@ -82,6 +82,14 @@
                                 <input type="text" class="form-control"  formControlName="allergies" placeholder="{{ 'PRODUCT_CONTROLLER.ALLERGIES_PLACEHOLDER' | translate }}" equired>
                             </div>
                         </div><!-- Col -->
+
+                        <div class="col-sm-4" *ngIf="detail !== undefined">
+                          <div  class=" d-flex justify-content-center">
+                            <img class="img-md w-100" [src]="detail.barCode  | Imagen: img_rute_bar_code" ngbTooltip="Bar code: {{detail.barCode}}" >
+                          </div>
+                          <p class=" d-flex justify-content-center"> <button class="btn btn-link" (click)="generarPdfHoja()"> Imprimir hoja</button> </p>
+                        
+                        </div>
                     </div><!-- Col -->
 
 

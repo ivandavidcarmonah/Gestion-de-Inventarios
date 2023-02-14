@@ -37,6 +37,7 @@ export const API_ROUTES = {
   PRODUCT_INSERT: `product/new-product/`,
   PRODUCT_DELETE: `product/delete/`,
   PRODUCT_GET_IMAGEN: 'product/get-file/',
+  PRODUCT_GET_IMAGEN_BAR_CODE: 'product/get-bar-code/',
   PRODUCT_SAVE_IMAGEN: 'product/save-file/',
 
   //ROLES CONTROLLER

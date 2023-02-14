@@ -17,6 +17,7 @@ export class ProductDetailComponent implements OnInit {
 
   @ViewChild('angularCropper') public angularCropper: CropperComponent;
   img_rute = API_ROUTES.PRODUCT_GET_IMAGEN;
+  img_rute_bar_code = API_ROUTES.PRODUCT_GET_IMAGEN_BAR_CODE;
   resultImage: any;
 
   
@@ -139,5 +140,10 @@ export class ProductDetailComponent implements OnInit {
  
   regresar(){
     this.router.navigate(['products/list-product/']);
+  }
+
+
+  generarPdfHoja(){
+    
   }
 }
