@@ -5,13 +5,13 @@ Cuenta con modulo de productos
 
 
 ![Panel de Administracion de Usuarios - Listado](https://ivantxodev.com/wp-content/uploads/2023/02/panel-user.png)
+
 ![Panel de Administracion de productos](https://ivantxodev.com/wp-content/uploads/2023/02/admin-panel.png)
 
-https://ivantxodev.com/wp-content/uploads/2023/02/panel-user.png
+![Panel de Administracion de productos](https://ivantxodev.com/wp-content/uploads/2023/02/panel-multi.png)
+
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.1.2.
-
-
 
 
 ## Development server
@@ -25,9 +25,54 @@ Es un Admin Dashboar Template  Premiun, 100% responsive que cuenta con botonera 
 
 
 
-###Conectando con el Api
+##Conectando con el Api URL
+
+Link repositorio backend [repositorio backend https://github.com/ivandavidcarmonah/Api-de-Gestion-de-Inventarios](https://github.com/ivandavidcarmonah/Api-de-Gestion-de-Inventarios)
+`
+
+export const ROLES = {
+  ROLE_SUPER_ROOT: `ROLE_SUPER_ROOT`,
+  ROLE_ADMIN: `ROLE_ADMIN`,
+  ROLE_EDITOR: `ROLE_EDITOR`,
+  ROLE_VISITANTE: `ROLE_VISITANTE`,
+  ROLE_CLIENTE: `ROLE_CLIENTE`
+}
+
+export const URL_BASE = `http://localhost:8080/api/`;
+
+export const API_ROUTES = {
+  //Logeo de usuario
+  AUTH: `auth/login`,
+  VALID_TOKEN: `auth/token-valid`,
 
 
+  //USER CONTROLLER
+  USERS_LIST: `user/list-users`,
+  USER_BYID: `user/edit-user/`,
+  USER_UPDATE: `user/update-user/`,
+  USER_INSERT: `user/new-user/`,
+  USER_DELETE: `user/delete/`,
+
+  //PRODUCT CONTROLLER
+  PRODUCT_LIST: `product/list-products`,
+  PRODUCT_BYID: `product/product/`,
+  PRODUCT_UPDATE: `product/update-product/`,
+  PRODUCT_INSERT: `product/new-product/`,
+  PRODUCT_DELETE: `product/delete/`,
+  PRODUCT_GET_IMAGEN: 'product/get-file/',
+  PRODUCT_GET_IMAGEN_BAR_CODE: 'product/get-bar-code/',
+  PRODUCT_SAVE_IMAGEN: 'product/save-file/',
+
+  //ROLES CONTROLLER
+  ROLES_LIST: `roles/list-roles`,
+
+  //MASTER DATA
+  GENDERS: `master-data/genders`,//Generos
+  LANGUAGES: `master-data/languages`,//Generos
+
+};
+`
+Tengo Un api construida que funciona con este template
 
 ## Build
 
