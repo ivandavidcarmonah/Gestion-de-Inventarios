@@ -28,6 +28,7 @@ Es un Admin Dashboar Template  Premiun, 100% responsive que cuenta con botonera 
 ##Conectando con el Api URL
 
 Link repositorio backend [repositorio backend https://github.com/ivandavidcarmonah/Api-de-Gestion-de-Inventarios](https://github.com/ivandavidcarmonah/Api-de-Gestion-de-Inventarios)
+
 Mas sobre este proyecto [https://ivantxodev.com/gestion-de-inventarios-proyecto-open-source-basado-en-roles-y-autorizaciones/](https://ivantxodev.com/gestion-de-inventarios-proyecto-open-source-basado-en-roles-y-autorizaciones/)
 
 
