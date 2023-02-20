@@ -4,11 +4,18 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Para ejecutar el proyecto debe descargar primero las  dependencias del proyecto Run `npm i` o `npm i --force`, luego ejecute el servidor con  `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
 ## Code scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Este template cuenta con diversos modulos que hacen al proyecto altamente escalable.
+Es un Admin Dashboar Template  Premiun, 100% responsive que cuenta con botonera por defecto.
+
+
+
+###Conectando con el Api
+
+
 
 ## Build
 
