@@ -28,9 +28,7 @@ Es un Admin Dashboar Template  Premiun, 100% responsive que cuenta con botonera 
 ##Conectando con el Api URL
 
 Link repositorio backend [repositorio backend https://github.com/ivandavidcarmonah/Api-de-Gestion-de-Inventarios](https://github.com/ivandavidcarmonah/Api-de-Gestion-de-Inventarios)
-`
-
-export const ROLES = {
+`export const ROLES = {
   ROLE_SUPER_ROOT: `ROLE_SUPER_ROOT`,
   ROLE_ADMIN: `ROLE_ADMIN`,
   ROLE_EDITOR: `ROLE_EDITOR`,
@@ -70,8 +68,8 @@ export const API_ROUTES = {
   GENDERS: `master-data/genders`,//Generos
   LANGUAGES: `master-data/languages`,//Generos
 
-};
-`
+};`
+
 Tengo Un api construida que funciona con este template
 
 ## Build
