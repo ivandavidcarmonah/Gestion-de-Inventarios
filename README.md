@@ -1,6 +1,18 @@
-# NobleuiAngular
+# Admin Dashboard - Gestion de Inventarios
+
+Es una plantilla de panel de Administracion que realiza peticiones al API () , Cuenta con modulo de Login con Autenticacion y Autorizaciones mediante Token.
+Cuenta con modulo de productos 
+
+
+![Panel de Administracion de Usuarios - Listado](https://ivantxodev.com/wp-content/uploads/2023/02/panel-user.png)
+![Panel de Administracion de productos](https://ivantxodev.com/wp-content/uploads/2023/02/admin-panel.png)
+
+https://ivantxodev.com/wp-content/uploads/2023/02/panel-user.png
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.1.2.
+
+
+
 
 ## Development server
 
